@@ -1,0 +1,61 @@
+<main class="Background" *ngIf='ShowLoading'>
+  <div class="loader">
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__ball"></div>
+  </div>    
+</main>
+
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #SideMenu class="sidenav" fixedInViewport
+  
+        [mode]="'side'"
+        [opened]="ToggleVariable">
+      <mat-toolbar style="background: white;height: 130px">
+        <img src="assets/img/Aviom.png" alt="assets.logo.svg" style="width:175px;height:120px">
+      </mat-toolbar>
+      <ul class="unselectable" style="height: 60%;">
+        <ul *ngIf="loginEmpRole == 'Admin'" style="padding: 0px;">
+          <li routerLink="m1" [routerLinkActive] = '["ActiveRoute"]' >
+            <img src="assets/img/admin.png" alt="Admin Icon" style="width : 20px;border-radius: 10px">
+            Employee
+          </li>
+          <li routerLink="m2" [routerLinkActive] = '["ActiveRoute"]' >
+            <img src="assets/img/branch.png" alt="branch Icon" style="width : 20px;border-radius: 10px">
+            Branch
+          </li>
+          <li routerLink="business-date" [routerLinkActive] = '["ActiveRoute"]' >
+            <img src="assets/img/businessDate.png" alt="branch Icon" style="width : 20px;border-radius: 10px">
+            Business Date
+          </li>
+        </ul>
+        <li [routerLink]="[menu.routerLink]" [routerLinkActive] = '["ActiveRoute"]' *ngFor="let menu of menuList"> 
+            <img [src]="[menu.icon]" alt="Leaves Icon" style="width : 20px;border-radius: 10px"> 
+            {{menu.menuName}}
+        </li>
+        <li routerLink="m11" [routerLinkActive] = '["ActiveRoute"]' > 
+          <img src="assets/img/excel.jpg" alt="Excel Icon" style="width : 20px;border-radius: 10px"> 
+            Report
+        </li>
+        
+      </ul>
+      <ul>
+        <li>
+          <button mat-button (click)='Logout()' class="logout-btn">
+          {{empName}} || Logout 
+          <mat-icon>exit_to_app</mat-icon>
+          </button></li>
+      </ul>
+              
+    </mat-sidenav>
+    <mat-sidenav-content>
+  
+      <div style="background: white;min-height: 96%;margin: 10px;border: 1px solid #efe1e1;">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

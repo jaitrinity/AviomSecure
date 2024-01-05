@@ -1,0 +1,68 @@
+<mat-tab-group>
+    <mat-tab label="Business Date">
+        <div class="row" style="margin:0px 0px 10px;overflow:auto;" *ngIf="businessDateId == 0">
+            <div class="col-md-3">
+                <label class="text-bold ">Business Date <span>*</span> </label>
+                <input type="Date" [(ngModel)]="businessDate" [max]="todayDate" class="form-control input-sm tom-border-radius"/>
+            </div>
+            <div class="col-md-3">
+                <label class="text-bold ">Status <span>*</span> </label>
+                <select class="form-control input-sm tom-border-radius" [(ngModel)]="status">
+                    <option value="">Select</option>
+                    <option>Start</option>
+                    <option>Stop</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label style="color: transparent;display: block">filter</label>
+                <button class="btn text-bold text-white tom-border-radius" [ngStyle]="{'background-color':button}" (click)="submitBusinessDate()">
+                    Submit
+                </button>
+            </div>
+        </div>
+        <div class="row" style="margin:0px 0px 10px;overflow:auto;" *ngIf="businessDateId != 0 && isEdit == false">
+            <div class="col-md-3">
+                <label class="text-bold ">Business Date </label>
+                <input type="Date" [(ngModel)]="businessDate" class="form-control input-sm tom-border-radius" [disabled]="true"/>
+            </div>
+            <div class="col-md-3">
+                <label class="text-bold ">Status </label>
+                <select class="form-control input-sm tom-border-radius" [(ngModel)]="status" [disabled]="true">
+                    <option value="">Select</option>
+                    <option>Start</option>
+                    <option>Stop</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label style="color: transparent;display: block">filter</label>
+                <button class="btn text-bold text-white tom-border-radius" [ngStyle]="{'background-color':button}" (click)="isEdit = true">
+                    Edit
+                </button>
+            </div>
+        </div>
+        <div class="row" style="margin:0px 0px 10px;overflow:auto;" *ngIf="isEdit">
+            <div class="col-md-3">
+                <label class="text-bold ">Business Date <span>*</span></label>
+                <input type="Date" [(ngModel)]="businessDate" [max]="todayDate" class="form-control input-sm tom-border-radius"/>
+            </div>
+            <div class="col-md-3">
+                <label class="text-bold ">Status <span>*</span></label>
+                <select class="form-control input-sm tom-border-radius" [(ngModel)]="status">
+                    <option value="">Select</option>
+                    <option>Start</option>
+                    <option>Stop</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label style="color: transparent;display: block">filter</label>
+                <button class="btn text-bold text-white tom-border-radius" [ngStyle]="{'background-color':button}" (click)="submitBusinessDate()">
+                    Save
+                </button> &nbsp;
+                <button class="btn text-bold text-white tom-border-radius" [ngStyle]="{'background-color':button}" (click)="cancel()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </mat-tab>
+
+</mat-tab-group>
